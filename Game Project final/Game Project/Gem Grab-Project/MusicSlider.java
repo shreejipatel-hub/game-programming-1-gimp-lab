@@ -1,27 +1,22 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class MusicSlider here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * MusicSlider draws the background bar for the volume slider.
+ * This is the long horizontal line that the knob slides along.
  */
 public class MusicSlider extends Actor
 {
-    
     public MusicSlider()
     {
-        GreenfootImage img = new GreenfootImage(200,8);
+        // Create a horizontal bar (200px wide, 8px tall)
+        GreenfootImage img = new GreenfootImage(200, 8);
         img.setColor(Color.GRAY);
-        img.fillRect(0,3,200,4);
+        img.fillRect(0, 3, 200, 4);  // centered on the Y-axis
         setImage(img);
     }
-    /**
-     * Act - do whatever the MusicSlider wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+
     public void act()
     {
-        // Add your action code here.
+        // The slider bar itself does not need to do anything.
     }
 }

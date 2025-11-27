@@ -1,24 +1,26 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-/** YOYOYO Test1 by Credo
+/** YOYOYO Test1 by Credo */
 /**
- * Write a description of class MainMenu here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Main menu for the game.
  */
 public class MainMenu extends World
 {
     private static GreenfootSound music = new GreenfootSound("menumusic.mp3");
+    private static double volume = 1.0;
 
     /**
      * Constructor for objects of class MainMenu.
-     * 
      */
     public MainMenu()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(810, 540, 1);
-        music.playLoop();
+
+        // Play menu music only once
+        if (!music.isPlaying()) {
+            music.playLoop();
+        }
+        music.setVolume((int)(volume * 100));
+
         prepare();
     }
 
@@ -36,74 +38,63 @@ public class MainMenu extends World
     {
         music.pause();
     }
+    
+    public static void setMusicVolume(double v)
+    {
+        volume = v;
+        music.setVolume((int)(volume * 100));
+    }
 
     private void startParticles()
     {
-        // 20% chance
         if (Greenfoot.getRandomNumber(5) == 0)
         {
             int x = Greenfoot.getRandomNumber(getWidth());
-            int y = getHeight() + 10; // start below screen
+            int y = getHeight() + 10;
             addObject(new Particle(), x, y);
         }
     }
 
     /**
      * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
+     * Add UI elements, buttons, and the volume slider.
      */
     private void prepare()
     {
-        PlayButton playButton = new PlayButton();
-        addObject(playButton,128,379);
-        playButton.setLocation(118,391);
-        SkinsButton skinsButton = new SkinsButton();
-        addObject(skinsButton,123,437);
-        SettingsButton settingsButton = new SettingsButton();
-        addObject(settingsButton,122,479);
-        playButton.setLocation(142,378);
-        skinsButton.setLocation(117,411);
-        playButton.setLocation(99,367);
-        settingsButton.setLocation(118,452);
-        CreditsButton creditsButton = new CreditsButton();
-        addObject(creditsButton,108,496);
-        playButton.setLocation(125,353);
-        playButton.setLocation(95,345);
-        skinsButton.setLocation(114,397);
-        settingsButton.setLocation(96,443);
-        creditsButton.setLocation(89,489);
-        skinsButton.setLocation(90,396);
-        playButton.setLocation(84,348);
-        settingsButton.setLocation(79,440);
-        settingsButton.setLocation(86,438);
-        playButton.setLocation(88,346);
-        playButton.setLocation(92,345);
-        playButton.setLocation(88,346);
-        RedButton redButton = new RedButton();
-        addObject(redButton,732,499);
+        // --- TITLE ---
         GameTitle gameTitle = new GameTitle();
-        addObject(gameTitle,399,120);
-        playButton.setLocation(395,243);
-        playButton.setLocation(376,266);
-        skinsButton.setLocation(360,328);
-        settingsButton.setLocation(386,383);
-        creditsButton.setLocation(410,451);
-        playButton.setLocation(354,267);
-        playButton.setLocation(406,266);
-        creditsButton.setLocation(181,432);
-        settingsButton.setLocation(176,322);
-        skinsButton.setLocation(408,334);
-        skinsButton.setLocation(405,331);
-        playButton.setLocation(387,261);
-        playButton.setLocation(392,255);
-        skinsButton.setLocation(382,310);
-        skinsButton.setLocation(393,312);
-        settingsButton.setLocation(412,376);
-        settingsButton.setLocation(400,364);
-        settingsButton.setLocation(392,368);
-        creditsButton.setLocation(432,432);
-        creditsButton.setLocation(395,423);
-        creditsButton.setLocation(385,425);
-        creditsButton.setLocation(395,428);
+        addObject(gameTitle, 399, 120);
+
+        // --- BUTTONS ---
+        PlayButton playButton = new PlayButton();
+        addObject(playButton, 392, 255);
+
+        SkinsButton skinsButton = new SkinsButton();
+        addObject(skinsButton, 393, 312);
+
+        SettingsButton settingsButton = new SettingsButton();
+        addObject(settingsButton, 392, 368);
+
+        CreditsButton creditsButton = new CreditsButton();
+        addObject(creditsButton, 395, 428);
+
+        RedButton redButton = new RedButton();
+        addObject(redButton, 732, 499);
+
+        // --- VOLUME SLIDER LABEL ---
+        VolumeLabel label = new VolumeLabel();      // use your volume.png image
+        addObject(label, getWidth() / 2, 460);
+
+        // --- VOLUME SLIDER BAR ---
+        MusicSlider slider = new MusicSlider();
+        addObject(slider, getWidth() / 2, 500);
+
+        // --- VOLUME SLIDER KNOB ---
+        MusicBar knob = new MusicBar(slider);
+
+        // Position knob according to saved volume value
+        int min = slider.getX() - 100;
+        int xPosition = min + (int)(volume * 200);
+        addObject(knob, xPosition, 500);
     }
 }
