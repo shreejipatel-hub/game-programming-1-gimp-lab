@@ -18,13 +18,5 @@ public class MusicBar extends Actor
         img.fillOval(0,0,20,20);
         setImage(img);
     }
-    /**
-     * Act - do whatever the MusicBar wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        if(GreenfootImage)
-        // Add your action code here.
-    }
+    
 }

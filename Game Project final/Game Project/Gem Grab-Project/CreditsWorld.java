@@ -41,5 +41,7 @@ public class CreditsWorld extends World
         MainMenuButton mainMenuButton = new MainMenuButton();
         addObject(mainMenuButton,128,379);
         mainMenuButton.setLocation(750,60);
+        RedButton redButton = new RedButton();
+        addObject(redButton,780,355);
     }
 }
