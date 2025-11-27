@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=MainMenu
-comment0.text=\r\n\ Main\ menu\ for\ the\ game.\r\n
+comment0.text=\ Test3\r\n/**\r\n\ Main\ menu\ for\ the\ game.\r\n
 comment1.params=
 comment1.target=MainMenu()
 comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ MainMenu.\r\n
