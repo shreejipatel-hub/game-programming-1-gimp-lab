@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-/** YOYOYO Test1 by Credo */
+/** YOYOYO Test2 by Credo */
 /**
  * Main menu for the game.
  */
