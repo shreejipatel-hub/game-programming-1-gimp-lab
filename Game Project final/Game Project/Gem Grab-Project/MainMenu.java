@@ -83,5 +83,27 @@ public class MainMenu extends World
         addObject(redButton,732,499);
         GameTitle gameTitle = new GameTitle();
         addObject(gameTitle,399,120);
+        playButton.setLocation(395,243);
+        playButton.setLocation(376,266);
+        skinsButton.setLocation(360,328);
+        settingsButton.setLocation(386,383);
+        creditsButton.setLocation(410,451);
+        playButton.setLocation(354,267);
+        playButton.setLocation(406,266);
+        creditsButton.setLocation(181,432);
+        settingsButton.setLocation(176,322);
+        skinsButton.setLocation(408,334);
+        skinsButton.setLocation(405,331);
+        playButton.setLocation(387,261);
+        playButton.setLocation(392,255);
+        skinsButton.setLocation(382,310);
+        skinsButton.setLocation(393,312);
+        settingsButton.setLocation(412,376);
+        settingsButton.setLocation(400,364);
+        settingsButton.setLocation(392,368);
+        creditsButton.setLocation(432,432);
+        creditsButton.setLocation(395,423);
+        creditsButton.setLocation(385,425);
+        creditsButton.setLocation(395,428);
     }
 }
