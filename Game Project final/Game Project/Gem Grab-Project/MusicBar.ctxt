@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=MusicBar
+comment0.text=\r\n\ MusicBar\ is\ the\ draggable\ knob\ for\ the\ volume\ slider.\r\n\ It\ moves\ along\ the\ MusicSlider\ and\ updates\ the\ MainMenu\ volume.\r\n
+comment1.params=bar
+comment1.target=MusicBar(MusicSlider)
+comment1.text=\r\n\ Constructor\ receives\ the\ slider\ bar\ so\ the\ knob\ knows\ where\ to\ stay.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Handles\ dragging\ the\ knob\ and\ converting\ position\ into\ volume\ (0.0\u20131.0).\r\n
+numComments=3
