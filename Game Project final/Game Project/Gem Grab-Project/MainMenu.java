@@ -97,5 +97,7 @@ public class MainMenu extends World
         int min = slider.getX() - 100;
         int xPosition = min + (int)(volume * 200);
         addObject(knob, xPosition, 500);
+        volumeLabel.setLocation(404,463);
+        removeObject(volumeLabel);
     }
 }
