@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=MusicBar
-comment0.text=\r\n\ MusicBar\ is\ the\ draggable\ knob\ that\ the\ user\ moves\ along\ the\ MusicSlider.\r\n\ It\ calculates\ a\ volume\ level\ (0.0\ to\ 1.0)\ based\ on\ its\ X-position\ and\ \r\n\ updates\ the\ MainMenu's\ music\ volume\ accordingly.\r\n
-comment1.params=bar
-comment1.target=MusicBar(MusicSlider)
-comment1.text=\r\n\ Constructor\ receives\ the\ bar\ so\ we\ know\ the\ slider's\ center\ point.\r\n
-comment2.params=
-comment2.target=void\ act()
-numComments=3
