@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MainMenu extends World
 {
-    private GreenfootSound music = new GreenfootSound("menumusic.mp3");
+    private static GreenfootSound music = new GreenfootSound("menumusic.mp3");
 
     /**
      * Constructor for objects of class MainMenu.
