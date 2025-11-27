@@ -17,7 +17,7 @@ public class SettingsWorld extends World
     public SettingsWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 420, 1);
+        super(800, 422, 1);
         
         prepare();
     }
