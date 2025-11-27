@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.target=MusicBar
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ MusicBar\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=bar
-comment1.target=MusicBar(MusicSlider)
-numComments=2
