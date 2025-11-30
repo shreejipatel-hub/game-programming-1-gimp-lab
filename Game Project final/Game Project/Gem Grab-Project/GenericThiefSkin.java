@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class GenericThiefSkin here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author 
+ * @version 
  */
 public class GenericThiefSkin extends SkinsButton
 {
@@ -13,17 +13,18 @@ public class GenericThiefSkin extends SkinsButton
     private boolean isHovering = false;
 
     private GreenfootSound hoverSound = new GreenfootSound("buttonhover.mp3");
+
     /**
-     * Act - do whatever the GenericThiefSkin wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act - do whatever the GenericThiefSkin wants to do.
      */
     public void act()
     {
+        // -------- HOVER EFFECT --------
         if (Greenfoot.mouseMoved(this)) 
         {
             if (!isHovering)
             {
-                hoverSound.play();   // <-- 🔊 plays once per hover
+                hoverSound.play();   
                 isHovering = true;
             }
             setImage(hoverImage);
@@ -32,6 +33,13 @@ public class GenericThiefSkin extends SkinsButton
         {
             isHovering = false;
             setImage(baseImage);
+        }
+
+        // -------- CLICK TO SELECT THIS SKIN --------
+        if (Greenfoot.mouseClicked(this))
+        {
+            SkinManager.setSkin("thief");
+            Greenfoot.setWorld(new MainMenu());
         }
     }
     

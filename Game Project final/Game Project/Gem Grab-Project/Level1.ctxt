@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Level1
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ Level1\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\r\n\ Level\ 1\ selection\ button.\r\n
 comment1.params=
 comment1.target=Level1()
 comment2.params=w
@@ -11,4 +11,7 @@ comment4.params=
 comment4.target=void\ floatUpDown()
 comment5.params=
 comment5.target=void\ glow()
-numComments=6
+comment6.params=
+comment6.target=void\ checkClick()
+comment6.text=\r\n\ When\ clicked,\ go\ to\ Level1World.\r\n
+numComments=7

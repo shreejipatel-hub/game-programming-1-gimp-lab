@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=Player
+comment0.text=\r\n\ Base\ Player\ class\ containing\ movement,\ gravity,\ jumping,\r\n\ health\ system,\ and\ collision\ checks.\r\n
+comment1.params=
+comment1.target=void\ act()
+comment2.params=
+comment2.target=void\ applyGravity()
+comment3.params=
+comment3.target=void\ handleMovement()
+comment4.params=
+comment4.target=void\ handleJump()
+comment5.params=
+comment5.target=void\ handleCrouch()
+comment6.params=
+comment6.target=void\ checkTrapCollision()
+comment7.params=
+comment7.target=void\ takeDamage()
+comment8.params=
+comment8.target=void\ die()
+numComments=9

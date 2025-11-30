@@ -1,10 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Level1 here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Level 1 selection button.
  */
 public class Level1 extends LevelButton
 {
@@ -12,7 +9,8 @@ public class Level1 extends LevelButton
     private int originalY;
 
     private int alpha = 150;     // starting transparency
-    private int direction = 3;  // glow speed
+    private int direction = 3;   // glow speed
+
     public Level1()
     {
         GreenfootImage img = getImage();
@@ -29,6 +27,7 @@ public class Level1 extends LevelButton
     {
         floatUpDown();
         glow();
+        checkClick(); // <-- ADDED
     }
 
     private void floatUpDown()
@@ -42,12 +41,22 @@ public class Level1 extends LevelButton
     {
         alpha += direction;
 
-        // bounce between dim and bright
         if (alpha >= 255 || alpha <= 120)
         {
             direction = -direction;
         }
 
         getImage().setTransparency(alpha);
+    }
+
+    /**
+     * When clicked, go to Level1World.
+     */
+    private void checkClick()
+    {
+        if (Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new Level1World());
+        }
     }
 }

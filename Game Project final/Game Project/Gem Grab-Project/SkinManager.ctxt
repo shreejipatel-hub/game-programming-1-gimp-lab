@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=SkinManager
+comment1.params=skin
+comment1.target=void\ setSkin(java.lang.String)
+comment2.params=
+comment2.target=greenfoot.Actor\ getSelectedPlayer()
+numComments=3

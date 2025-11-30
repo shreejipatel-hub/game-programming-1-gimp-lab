@@ -36,29 +36,38 @@ public class SkinsWorld extends World
         }
     }
     
-       private void prepare()
+    private void prepare()
     {
+        // --- BUTTONS ---
         MainMenuButton mainMenuButton = new MainMenuButton();
         addObject(mainMenuButton,128,379);
         mainMenuButton.setLocation(700,70);
+
         RedButton redButton = new RedButton();
         addObject(redButton,732,499);
         redButton.setLocation(750,430);
+
+        // --- SKINS (now clickable using their own act() methods) ---
         ThiefSkin thiefSkin = new ThiefSkin();
         addObject(thiefSkin, 128, 379);
         thiefSkin.setLocation(243,0);
+
         GenericThiefSkin genericThiefSkin = new GenericThiefSkin();
         addObject(genericThiefSkin,128,379);
         genericThiefSkin.setLocation(243,410);
+
         RedSkin redSkin = new RedSkin();
         addObject(redSkin, 128, 379);
         redSkin.setLocation(425,380);
+
         ClassicSkin classicSkin = new ClassicSkin();
         addObject(classicSkin,128,379);
         classicSkin.setLocation(416,415);
+
+        // --- LOCKED SKINS ---
         Locked lockedIcon = new Locked();
         addObject(lockedIcon,573,350);
-        //lockedIcon.setLocation(573,300);
+
         LockedSkin lockedSkin = new LockedSkin();
         addObject(lockedSkin,128,379);
         lockedSkin.setLocation(573,410);

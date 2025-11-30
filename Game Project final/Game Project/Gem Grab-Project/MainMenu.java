@@ -85,8 +85,8 @@ public class MainMenu extends World
         RedButton redButton = new RedButton();
         addObject(redButton, 732, 499);
 
-        // --- VOLUME SLIDER LABEL ---
-        VolumeLabel label = new VolumeLabel();      // use your volume.png image
+        // --- VOLUME SLIDER LABEL (uses your volume.png image) ---
+        VolumeLabel label = new VolumeLabel();
         addObject(label, getWidth() / 2, 460);
 
         // --- VOLUME SLIDER BAR ---
@@ -100,7 +100,5 @@ public class MainMenu extends World
         int min = slider.getX() - 100;
         int xPosition = min + (int)(volume * 200);
         addObject(knob, xPosition, 500);
-        volumeLabel.setLocation(404,463);
-        removeObject(volumeLabel);
     }
 }

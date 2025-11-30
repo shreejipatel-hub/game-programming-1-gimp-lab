@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class ClassicSkin here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author  
+ * @version 
  */
 public class ClassicSkin extends SkinsButton
 {
@@ -15,16 +15,16 @@ public class ClassicSkin extends SkinsButton
     private GreenfootSound hoverSound = new GreenfootSound("buttonhover.mp3");
 
     /**
-     * Act - do whatever the ClassicSkin wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Act - do whatever the ClassicSkin wants to do.
      */
     public void act()
     {
+        // ---------- HOVER EFFECT ----------
         if (Greenfoot.mouseMoved(this)) 
         {
             if (!isHovering)
             {
-                hoverSound.play();   // <-- 🔊 plays once per hover
+                hoverSound.play();
                 isHovering = true;
             }
             setImage(hoverImage);
@@ -33,6 +33,13 @@ public class ClassicSkin extends SkinsButton
         {
             isHovering = false;
             setImage(baseImage);
+        }
+
+        // ---------- CLICK SELECTS SKIN ----------
+        if (Greenfoot.mouseClicked(this))
+        {
+            SkinManager.setSkin("classic");     // <-- Remember chosen skin
+            Greenfoot.setWorld(new MainMenu()); // <-- Return to menu
         }
     }
     
