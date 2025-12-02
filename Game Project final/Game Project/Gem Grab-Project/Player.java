@@ -15,6 +15,9 @@ public class Player extends Actor
     protected boolean onGround = false;
     protected boolean crouching = false;
 
+    // Added: Facing direction to control image flipping
+    protected boolean facingRight = true;
+
     // -------- HEALTH SYSTEM --------
     protected int health = 3;
 
@@ -78,34 +81,48 @@ public class Player extends Actor
     //                         LEFT + RIGHT MOVEMENT
     // ===================================================================
 
-private void handleMovement()
-{
-    int oldX = getX();
-
-    // Move left
-    if (Greenfoot.isKeyDown("left"))
+    private void handleMovement()
     {
-        setLocation(getX() - moveSpeed, getY());
+        int oldX = getX();
 
-        // check LEFT collision only
-        if (getOneObjectAtOffset(-getImage().getWidth()/2, 0, Platform.class) != null)
+        // -------------------- MOVE LEFT --------------------
+        if (Greenfoot.isKeyDown("left"))
         {
-            setLocation(oldX, getY());
+            setLocation(getX() - moveSpeed, getY());
+
+            // Flip image ONLY when switching to face left
+            if (facingRight)
+            {
+                getImage().mirrorHorizontally();
+                facingRight = false;
+            }
+
+            // check LEFT collision only
+            if (getOneObjectAtOffset(-getImage().getWidth()/2, 0, Platform.class) != null)
+            {
+                setLocation(oldX, getY());
+            }
+        }
+
+        // -------------------- MOVE RIGHT --------------------
+        if (Greenfoot.isKeyDown("right"))
+        {
+            setLocation(getX() + moveSpeed, getY());
+
+            // Flip image ONLY when switching to face right
+            if (!facingRight)
+            {
+                getImage().mirrorHorizontally();
+                facingRight = true;
+            }
+
+            // check RIGHT collision only
+            if (getOneObjectAtOffset(getImage().getWidth()/2, 0, Platform.class) != null)
+            {
+                setLocation(oldX, getY());
+            }
         }
     }
-
-    // Move right
-    if (Greenfoot.isKeyDown("right"))
-    {
-        setLocation(getX() + moveSpeed, getY());
-
-        // check RIGHT collision only
-        if (getOneObjectAtOffset(getImage().getWidth()/2, 0, Platform.class) != null)
-        {
-            setLocation(oldX, getY());
-        }
-    }
-}
 
     // ===================================================================
     //                              JUMPING
