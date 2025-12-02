@@ -15,6 +15,14 @@ public class ThiefPlayer extends Player
     public void act()
     {
         super.act();
-        // Add your action code here.
+        
+    }
+    
+    public ThiefPlayer()
+    {
+        GreenfootImage img = getImage();
+        img.scale(50, 50);
+        
+        setImage(img);
     }
 }
