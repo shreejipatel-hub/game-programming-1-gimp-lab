@@ -17,7 +17,7 @@ public class RedSkin extends SkinsDeco
     public RedSkin()
     {
         GreenfootImage img = getImage();
-        img.scale(100, 100);
+        img.scale(50, 50);
         
 
         
