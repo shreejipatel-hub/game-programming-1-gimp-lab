@@ -71,15 +71,12 @@ public class SkinsWorld extends World
         LockedSkin lockedSkin = new LockedSkin();
         addObject(lockedSkin,128,379);
         lockedSkin.setLocation(573,410);
-        redSkin.setLocation(393,358);
-        redSkin.setLocation(409,350);
-        redSkin.setLocation(420,362);
-        redSkin.setLocation(415,363);
-        redSkin.setLocation(419,363);
-        redSkin.setLocation(416,363);
-        redSkin.setLocation(423,339);
-        redSkin.setLocation(414,350);
-        classicSkin.setLocation(438,427);
-        classicSkin.setLocation(419,427);
+        redSkin.setLocation(400,374);
+        redSkin.setLocation(413,369);
+        ThiefSkin thiefSkin2 = new ThiefSkin();
+        addObject(thiefSkin2,256,371);
+        thiefSkin2.setLocation(243,378);
+        thiefSkin2.setLocation(343,257);
+        removeObject(thiefSkin2);
     }
 }
