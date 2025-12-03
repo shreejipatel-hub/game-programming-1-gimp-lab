@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level2 extends LevelButton
 {
- private int counter = 0;
+    private int counter = 0;
     private int originalY;
 
     private int alpha = 150;     // starting transparency
@@ -31,6 +31,7 @@ public class Level2 extends LevelButton
     {
         floatUpDown();
         glow();
+        checkClick();
     }
 
     private void floatUpDown()
@@ -51,5 +52,15 @@ public class Level2 extends LevelButton
         }
 
         getImage().setTransparency(alpha);
+    }
+        /**
+     * When clicked, go to Level 2 World.
+     */
+    private void checkClick()
+    {
+        if (Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new Level2World());
+        }
     }
 }

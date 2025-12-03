@@ -1,24 +1,23 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Trap here.
+ * Write a description of class ExitPortal here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Trap extends Actor
+public class ExitPortal extends Portals
 {
     /**
-     * Act - do whatever the Trap wants to do. This method is called whenever
+     * Act - do whatever the ExitPortal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
         // Add your action code here.
-    }
-    
-    public boolean isDangerous()
-    {
-        return true;
+        GreenfootImage EntryPortal = getImage();
+        EntryPortal.scale(60, 60); 
+        setImage(EntryPortal);
+        turn(-3);
     }
 }

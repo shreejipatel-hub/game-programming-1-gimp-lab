@@ -14,9 +14,7 @@ public class Player extends Actor
 
     protected boolean onGround = false;
     protected boolean crouching = false;
-
-    // Added: Facing direction to control image flipping
-    protected boolean facingRight = true;
+    private int teleportCooldown = 0;
 
     // -------- HEALTH SYSTEM --------
     protected int health = 3;
@@ -28,6 +26,15 @@ public class Player extends Actor
         handleJump();
         handleCrouch();
         checkTrapCollision();
+        if(teleportCooldown > 0)
+        {
+            teleportCooldown--;
+        }
+        
+        if (teleportCooldown==0)
+        {
+            checkPortals();
+        }
     }
 
     // ===================================================================
@@ -81,48 +88,36 @@ public class Player extends Actor
     //                         LEFT + RIGHT MOVEMENT
     // ===================================================================
 
-    private void handleMovement()
+  
+    
+private void handleMovement()
+{
+    int oldX = getX();
+
+    // Move left
+    if (Greenfoot.isKeyDown("left"))
     {
-        int oldX = getX();
+        setLocation(getX() - moveSpeed, getY());
 
-        // -------------------- MOVE LEFT --------------------
-        if (Greenfoot.isKeyDown("left"))
+        // check LEFT collision only
+        if (getOneObjectAtOffset(-getImage().getWidth()/2, 0, Platform.class) != null)
         {
-            setLocation(getX() - moveSpeed, getY());
-
-            // Flip image ONLY when switching to face left
-            if (facingRight)
-            {
-                getImage().mirrorHorizontally();
-                facingRight = false;
-            }
-
-            // check LEFT collision only
-            if (getOneObjectAtOffset(-getImage().getWidth()/2, 0, Platform.class) != null)
-            {
-                setLocation(oldX, getY());
-            }
-        }
-
-        // -------------------- MOVE RIGHT --------------------
-        if (Greenfoot.isKeyDown("right"))
-        {
-            setLocation(getX() + moveSpeed, getY());
-
-            // Flip image ONLY when switching to face right
-            if (!facingRight)
-            {
-                getImage().mirrorHorizontally();
-                facingRight = true;
-            }
-
-            // check RIGHT collision only
-            if (getOneObjectAtOffset(getImage().getWidth()/2, 0, Platform.class) != null)
-            {
-                setLocation(oldX, getY());
-            }
+            setLocation(oldX, getY());
         }
     }
+
+    // Move right
+    if (Greenfoot.isKeyDown("right"))
+    {
+        setLocation(getX() + moveSpeed, getY());
+
+        // check RIGHT collision only
+        if (getOneObjectAtOffset(getImage().getWidth()/2, 0, Platform.class) != null)
+        {
+            setLocation(oldX, getY());
+        }
+    }
+}
 
     // ===================================================================
     //                              JUMPING
@@ -159,10 +154,41 @@ public class Player extends Actor
 
     private void checkTrapCollision()
     {
-        if (isTouching(Trap.class))
+        Trap hitTrap = (Trap) getOneIntersectingObject(Trap.class);
+        if (hitTrap != null && hitTrap.isDangerous())
         {
             takeDamage();
-            removeTouching(Trap.class);
+            
+        }
+        
+    }
+    
+    //teleportation logic
+    public void checkPortals()
+    {
+        if (Greenfoot.isKeyDown("up"))
+        {
+            if(isTouching(EntryPortal.class))
+            {
+                if(!getWorld().getObjects(ExitPortal.class).isEmpty())
+                {
+                    Actor target = (Actor) getWorld().getObjects(ExitPortal.class).get(0);
+                    setLocation(target.getX(), target.getY());
+                    teleportCooldown = 60;
+                }
+            }
+            
+            else if (isTouching(ExitPortal.class))
+            {
+                if (!getWorld().getObjects(EntryPortal.class).isEmpty())
+                {
+                    Actor target = (Actor) getWorld().getObjects(EntryPortal.class).get(0);
+                
+                    setLocation(target.getX(), target.getY());
+                
+                    teleportCooldown = 60;
+                }
+            }
         }
     }
 
@@ -176,12 +202,13 @@ public class Player extends Actor
         }
         else
         {
-            setLocation(100, 100); // respawn point for now
+            setLocation(89, 463); // respawn point for now
         }
     }
 
     private void die()
     {
+        Greenfoot.setWorld(new DeathWorld());
         getWorld().removeObject(this);
     }
 }

@@ -8,6 +8,11 @@ public class Level1World extends World
 
         prepare();
     }
+    
+    public void act()
+    {
+        
+    }
 
     private void prepare()
     {
@@ -140,5 +145,11 @@ public class Level1World extends World
         addObject(rotatedPlatform,623,169);
         PlatForm2 platForm23 = new PlatForm2();
         addObject(platForm23,806,218);
+        rotatedPlatform.setLocation(736,166);
+        ExitPortal exitPortal = new ExitPortal();
+        addObject(exitPortal,736,166);
+        EntryPortal entryPortal = new EntryPortal();
+        addObject(entryPortal,54,249);
+        exitPortal.setLocation(759,163);
     }
 }
