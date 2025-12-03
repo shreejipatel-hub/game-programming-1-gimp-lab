@@ -17,7 +17,7 @@ public class ThiefSkin extends SkinsDeco
     public ThiefSkin()
     {
         GreenfootImage img = getImage();
-        img.scale(200, 200);
+        img.scale(70, 70);
         img.setTransparency(alpha);
         setImage(img);
     }

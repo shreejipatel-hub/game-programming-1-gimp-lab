@@ -1,0 +1,21 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class Lazer here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Lazer extends Trap
+{
+    /**
+     * Act - do whatever the Lazer wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        GreenfootImage Lazer = getImage();
+        Lazer.scale(40, 20); 
+        setImage(Lazer);
+    }
+}
