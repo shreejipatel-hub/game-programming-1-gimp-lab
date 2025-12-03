@@ -14,6 +14,7 @@ public class Player extends Actor
 
     protected boolean onGround = false;
     protected boolean crouching = false;
+    private int teleportCooldown = 0;
 
     // -------- HEALTH SYSTEM --------
     protected int health = 3;
@@ -25,7 +26,15 @@ public class Player extends Actor
         handleJump();
         handleCrouch();
         checkTrapCollision();
-        ;
+        if(teleportCooldown > 0)
+        {
+            teleportCooldown--;
+        }
+        
+        if (teleportCooldown==0)
+        {
+            checkPortals();
+        }
     }
 
     // ===================================================================
@@ -152,6 +161,35 @@ private void handleMovement()
             
         }
         
+    }
+    
+    //teleportation logic
+    public void checkPortals()
+    {
+        if (Greenfoot.isKeyDown("up"))
+        {
+            if(isTouching(EntryPortal.class))
+            {
+                if(!getWorld().getObjects(ExitPortal.class).isEmpty())
+                {
+                    Actor target = (Actor) getWorld().getObjects(ExitPortal.class).get(0);
+                    setLocation(target.getX(), target.getY());
+                    teleportCooldown = 60;
+                }
+            }
+            
+            else if (isTouching(ExitPortal.class))
+            {
+                if (!getWorld().getObjects(EntryPortal.class).isEmpty())
+                {
+                    Actor target = (Actor) getWorld().getObjects(EntryPortal.class).get(0);
+                
+                    setLocation(target.getX(), target.getY());
+                
+                    teleportCooldown = 60;
+                }
+            }
+        }
     }
 
     public void takeDamage()

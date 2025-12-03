@@ -15,5 +15,9 @@ public class ExitPortal extends Portals
     public void act()
     {
         // Add your action code here.
+        GreenfootImage EntryPortal = getImage();
+        EntryPortal.scale(60, 60); 
+        setImage(EntryPortal);
+        turn(-3);
     }
 }

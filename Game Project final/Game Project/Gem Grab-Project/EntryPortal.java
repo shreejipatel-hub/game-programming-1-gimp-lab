@@ -9,7 +9,7 @@ import greenfoot.GreenfootImage;
  */
 public class EntryPortal extends Portals
 {
-    
+    private int teleportCooldown = 0;
     /**
      * Act - do whatever the EntryPortal wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -19,7 +19,6 @@ public class EntryPortal extends Portals
         GreenfootImage EntryPortal = getImage();
         EntryPortal.scale(60, 60); 
         setImage(EntryPortal);
-        
-        
+        turn(3);
     }
 }
