@@ -40,5 +40,37 @@ public class Level2World extends World
         addObject(platForm22,327,533);
         PlatForm2 platForm23 = new PlatForm2();
         addObject(platForm23,179,535);
+        PlatForm1 platForm1 = new PlatForm1();
+        addObject(platForm1,6,42);
+        RotatedPlatform rotatedPlatform = new RotatedPlatform();
+        addObject(rotatedPlatform,307,227);
+        rotatedPlatform.setLocation(311,222);
+        rotatedPlatform.setLocation(251,138);
+        platForm1.setLocation(252,55);
+        rotatedPlatform.setLocation(305,113);
+        platForm1.setLocation(138,43);
+        rotatedPlatform.setLocation(238,127);
+        rotatedPlatform.setLocation(238,197);
+        RotatedPlatform rotatedPlatform2 = new RotatedPlatform();
+        addObject(rotatedPlatform2,191,354);
+        rotatedPlatform2.setLocation(225,249);
+        rotatedPlatform.setLocation(235,256);
+        rotatedPlatform.setLocation(239,255);
+        rotatedPlatform.setLocation(239,258);
+        rotatedPlatform.setLocation(253,201);
+        rotatedPlatform.setLocation(239,180);
+        rotatedPlatform2.setLocation(239,429);
+        rotatedPlatform2.setLocation(259,457);
+        rotatedPlatform2.setLocation(234,463);
+        rotatedPlatform2.setLocation(242,248);
+        rotatedPlatform.setLocation(238,27);
+        rotatedPlatform.setLocation(241,177);
+        rotatedPlatform.setLocation(243,334);
+        rotatedPlatform.setLocation(239,136);
+        rotatedPlatform.setLocation(239,96);
+        rotatedPlatform2.setLocation(235,230);
+        rotatedPlatform2.setLocation(244,381);
+        rotatedPlatform2.setLocation(238,334);
+        rotatedPlatform2.setLocation(239,291);
     }
 }
