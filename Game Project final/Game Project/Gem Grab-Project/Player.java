@@ -145,11 +145,13 @@ private void handleMovement()
 
     private void checkTrapCollision()
     {
-        if (isTouching(Trap.class))
+        Trap hitTrap = (Trap) getOneIntersectingObject(Trap.class);
+        if (hitTrap != null && hitTrap.isDangerous())
         {
             takeDamage();
-            removeTouching(Trap.class);
+            
         }
+        
     }
 
     public void takeDamage()
@@ -162,7 +164,7 @@ private void handleMovement()
         }
         else
         {
-            setLocation(100, 100); // respawn point for now
+            setLocation(89, 463); // respawn point for now
         }
     }
 

@@ -18,7 +18,7 @@ public class Beam extends Trap
     public void act()
     {
         GreenfootImage Lazer = getImage();
-        Lazer.scale(20, 250); 
+        Lazer.scale(20, 220); 
         setImage(Lazer);
         timer++;
         
