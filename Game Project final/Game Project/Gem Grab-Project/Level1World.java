@@ -8,6 +8,11 @@ public class Level1World extends World
 
         prepare();
     }
+    
+    public void act()
+    {
+        
+    }
 
     private void prepare()
     {

@@ -21,8 +21,8 @@ public class LoadingWorld extends World
         prepare();
         //store the world we want to go to
         nextWorld = targetWorld;
-        //3 seconds *  60 acts = 600
-        timer = 180;
+        //2 seconds *  60 acts = 600
+        timer = 120;
     }
     
     public void act(){

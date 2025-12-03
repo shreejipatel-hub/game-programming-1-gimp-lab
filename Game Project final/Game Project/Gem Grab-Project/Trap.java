@@ -16,4 +16,9 @@ public class Trap extends Actor
     {
         // Add your action code here.
     }
+    
+    public boolean isDangerous()
+    {
+        return true;
+    }
 }

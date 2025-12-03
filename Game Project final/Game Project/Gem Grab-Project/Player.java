@@ -25,6 +25,7 @@ public class Player extends Actor
         handleJump();
         handleCrouch();
         checkTrapCollision();
+        ;
     }
 
     // ===================================================================
@@ -78,6 +79,8 @@ public class Player extends Actor
     //                         LEFT + RIGHT MOVEMENT
     // ===================================================================
 
+  
+    
 private void handleMovement()
 {
     int oldX = getX();
@@ -165,6 +168,7 @@ private void handleMovement()
 
     private void die()
     {
+        Greenfoot.setWorld(new DeathWorld());
         getWorld().removeObject(this);
     }
 }
