@@ -17,9 +17,9 @@ public class Level1World extends World
 
     private void prepare()
     {
-         gemCounter = new Counter("Gems: "); // Instantiate the counter
+        gemCounter = new Counter("Gems: "); // Instantiate the counter
         addObject(gemCounter, 50, 25); 
-        
+
         // 1. Get selected player from SkinManager
         Actor player = SkinManager.getSelectedPlayer();
 
@@ -174,7 +174,15 @@ public class Level1World extends World
         Spike spike36 = new Spike();
         addObject(spike36,482,448);
 
+        Gem1 gem1 = new Gem1();
+        addObject(gem1,660,445);
+        Gem2 gem2 = new Gem2();
+        addObject(gem2,787,370);
+        Gem3 gem3 = new Gem3();
+        addObject(gem3,262,240);
+        gem3.setLocation(274,259);
     }
+
     public Counter getGemCounter(){
         return gemCounter;
     }

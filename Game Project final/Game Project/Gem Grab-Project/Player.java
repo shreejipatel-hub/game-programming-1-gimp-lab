@@ -15,6 +15,8 @@ public class Player extends Actor
     protected boolean onGround = false;
     protected boolean crouching = false;
     private int teleportCooldown = 0;
+    public static int totalGems = 0;
+    public int levelGems = 0;
 
     //Health system
     protected int health = 3;
@@ -26,6 +28,8 @@ public class Player extends Actor
         handleJump();
         handleCrouch();
         checkTrapCollision();
+        checkGemCollection();
+        updateScoreBoard();
 
         checkDoor();
 
@@ -207,7 +211,24 @@ private void handleMovement()
         if(isTouching(Door.class)&& Greenfoot.isKeyDown("up"))
         {
             //Switch to the Level won world
-            Greenfoot.setWorld(new LevelWonWorld("You finished level 1!!"));
+            Greenfoot.setWorld(new LevelWonWorld("You finished level 1!!", levelGems));
         }
+    }
+    
+    //gem collection
+    public void checkGemCollection()
+    {
+        if(isTouching(Gems.class))
+        {
+            levelGems++;
+            totalGems++;
+            removeTouching(Gems.class);
+        }
+    }
+    
+    public void updateScoreBoard()
+    {
+       getWorld().showText("Level Gems: " + levelGems, 100, 30);
+        getWorld().showText("Total Gems: " + totalGems, 100, 50); 
     }
 }

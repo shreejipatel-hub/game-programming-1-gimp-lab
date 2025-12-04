@@ -15,5 +15,8 @@ public class Gem2 extends Gems
     public void act()
     {
         // Add your action code here.
+        GreenfootImage Gem2 = getImage();
+        Gem2.scale(40, 40); 
+        setImage(Gem2);
     }
 }

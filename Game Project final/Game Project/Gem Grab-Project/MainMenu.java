@@ -24,7 +24,7 @@ public class MainMenu extends World
             music.playLoop();
         }
         music.setVolume((int)(volume * 100));
-
+        
         prepare();
     }
 
