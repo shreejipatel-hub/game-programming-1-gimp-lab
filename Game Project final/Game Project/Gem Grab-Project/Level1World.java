@@ -2,10 +2,11 @@ import greenfoot.*;
 //yooo credo the goat gangy
 public class Level1World extends World
 {
+    private Counter gemCounter;
     public Level1World()
     {
         super(810, 540, 1);
-
+        
         prepare();
     }
     
@@ -16,6 +17,9 @@ public class Level1World extends World
 
     private void prepare()
     {
+        gemCounter = new Counter("Gems: "); // Instantiate the counter
+        addObject(gemCounter, 50, 25); 
+
         // 1. Get selected player from SkinManager
         Actor player = SkinManager.getSelectedPlayer();
 
@@ -151,5 +155,35 @@ public class Level1World extends World
         EntryPortal entryPortal = new EntryPortal();
         addObject(entryPortal,54,249);
         exitPortal.setLocation(759,163);
+        exitPortal.setLocation(689,434);
+        rotatedPlatform.setLocation(613,107);
+        rotatedPlatform.setLocation(608,121);
+        exitPortal.setLocation(611,109);
+        rotatedPlatform.setLocation(678,184);
+        exitPortal.setLocation(506,475);
+        rotatedPlatform.setLocation(540,84);
+        rotatedPlatform.setLocation(604,127);
+        exitPortal.setLocation(660,158);
+        exitPortal.setLocation(665,194);
+        exitPortal.setLocation(742,175);
+        Door door = new Door();
+        addObject(door,742,175);
+        exitPortal.setLocation(742,179);
+        exitPortal.setLocation(535,148);
+        exitPortal.setLocation(651,181);
+        Spike spike36 = new Spike();
+        addObject(spike36,482,448);
+
+        Gem1 gem1 = new Gem1();
+        addObject(gem1,660,445);
+        Gem2 gem2 = new Gem2();
+        addObject(gem2,787,370);
+        Gem3 gem3 = new Gem3();
+        addObject(gem3,262,240);
+        gem3.setLocation(274,259);
+    }
+
+    public Counter getGemCounter(){
+        return gemCounter;
     }
 }

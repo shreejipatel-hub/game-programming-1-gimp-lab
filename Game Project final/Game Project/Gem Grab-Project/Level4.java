@@ -31,6 +31,7 @@ private int counter = 0;
     {
         floatUpDown();
         glow();
+        checkClick();
     }
 
     private void floatUpDown()
@@ -51,5 +52,16 @@ private int counter = 0;
         }
 
         getImage().setTransparency(alpha);
+    }
+    
+               /**
+     * When clicked, go to Level 4 World.
+     */
+    private void checkClick()
+    {
+        if (Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new Level4World());
+        }
     }
 }
