@@ -16,7 +16,7 @@ public class Player extends Actor
     protected boolean crouching = false;
     private int teleportCooldown = 0;
 
-    // -------- HEALTH SYSTEM --------
+    //Health system
     protected int health = 3;
 
     public void act()
@@ -26,6 +26,7 @@ public class Player extends Actor
         handleJump();
         handleCrouch();
         checkTrapCollision();
+        checkDoor();
         if(teleportCooldown > 0)
         {
             teleportCooldown--;
@@ -37,9 +38,7 @@ public class Player extends Actor
         }
     }
 
-    // ===================================================================
-    //                  PLATFORM + GROUND COLLISION SYSTEM
-    // ===================================================================
+    //platform and ground collision
 
     private void applyGravity()
     {
@@ -50,7 +49,7 @@ public class Player extends Actor
 
         onGround = false;
 
-        // ----- COLLISION BELOW (LANDING) -----
+        //Landing
         Actor platformBelow = getOneObjectAtOffset(0, getImage().getHeight()/2, Platform.class);
         if (platformBelow != null && ySpeed >= 0)
         {
@@ -64,7 +63,7 @@ public class Player extends Actor
             onGround = true;
         }
 
-        // ----- COLLISION ABOVE (HEAD BUMP) -----
+        //HeadBump
         Actor platformAbove = getOneObjectAtOffset(0, -getImage().getHeight()/2, Platform.class);
         if (platformAbove != null && ySpeed < 0)
         {
@@ -74,7 +73,7 @@ public class Player extends Actor
             setLocation(getX(), getY() + 2);
         }
 
-        // ----- COLLISION WITH GROUND (bottom of world) -----
+        // Bottom of world
         int bottomLimit = getWorld().getHeight() - getImage().getHeight()/2;
         if (getY() > bottomLimit)
         {
@@ -84,12 +83,7 @@ public class Player extends Actor
         }
     }
 
-    // ===================================================================
-    //                         LEFT + RIGHT MOVEMENT
-    // ===================================================================
-
-  
-    
+    //Movement
 private void handleMovement()
 {
     int oldX = getX();
@@ -119,10 +113,6 @@ private void handleMovement()
     }
 }
 
-    // ===================================================================
-    //                              JUMPING
-    // ===================================================================
-
     private void handleJump()
     {
         if (Greenfoot.isKeyDown("space") && onGround)
@@ -131,10 +121,6 @@ private void handleMovement()
             onGround = false;
         }
     }
-
-    // ===================================================================
-    //                            CROUCHING
-    // ===================================================================
 
     private void handleCrouch()
     {
@@ -147,16 +133,16 @@ private void handleMovement()
             crouching = false;
         }
     }
-
-    // ===================================================================
-    //                       HEALTH + TRAP DAMAGE
-    // ===================================================================
-
-    private void checkTrapCollision()
+    
+    //damage
+   private void checkTrapCollision()
     {
         Trap hitTrap = (Trap) getOneIntersectingObject(Trap.class);
         if (hitTrap != null && hitTrap.isDangerous())
         {
+            
+            
+            
             takeDamage();
             
         }
@@ -209,6 +195,17 @@ private void handleMovement()
     private void die()
     {
         Greenfoot.setWorld(new DeathWorld());
-        getWorld().removeObject(this);
+        //getWorld().removeObject(this);
+    }
+    
+    //door logic
+    public void checkDoor()
+    {
+        //check interaction and collision
+        if(isTouching(Door.class)&& Greenfoot.isKeyDown("up"))
+        {
+            //Switch to the Level won world
+            Greenfoot.setWorld(new LevelWonWorld("You finished level 1!!"));
+        }
     }
 }
