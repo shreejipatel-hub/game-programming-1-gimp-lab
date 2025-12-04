@@ -26,13 +26,9 @@ public class Player extends Actor
         handleJump();
         handleCrouch();
         checkTrapCollision();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
         checkDoor();
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
         if(teleportCooldown > 0)
         {
             teleportCooldown--;

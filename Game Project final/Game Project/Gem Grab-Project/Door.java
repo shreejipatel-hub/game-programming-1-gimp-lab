@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+//yoyoy
 /**
  * Write a description of class Door here.
  * 
