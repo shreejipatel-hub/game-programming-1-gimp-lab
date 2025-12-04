@@ -2,10 +2,11 @@ import greenfoot.*;
 //yooo credo the goat gangy
 public class Level1World extends World
 {
+    private Counter gemCounter;
     public Level1World()
     {
         super(810, 540, 1);
-
+        
         prepare();
     }
     
@@ -16,6 +17,9 @@ public class Level1World extends World
 
     private void prepare()
     {
+         gemCounter = new Counter("Gems: "); // Instantiate the counter
+        addObject(gemCounter, 50, 25); 
+        
         // 1. Get selected player from SkinManager
         Actor player = SkinManager.getSelectedPlayer();
 
@@ -170,5 +174,8 @@ public class Level1World extends World
         Spike spike36 = new Spike();
         addObject(spike36,482,448);
 
+    }
+    public Counter getGemCounter(){
+        return gemCounter;
     }
 }
