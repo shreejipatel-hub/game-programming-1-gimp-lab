@@ -151,6 +151,7 @@ public class Level1World extends World
         EntryPortal entryPortal = new EntryPortal();
         addObject(entryPortal,54,249);
         exitPortal.setLocation(759,163);
+<<<<<<< Updated upstream
         exitPortal.setLocation(689,434);
         rotatedPlatform.setLocation(613,107);
         rotatedPlatform.setLocation(608,121);
@@ -169,5 +170,7 @@ public class Level1World extends World
         exitPortal.setLocation(651,181);
         Spike spike36 = new Spike();
         addObject(spike36,482,448);
+=======
+>>>>>>> Stashed changes
     }
 }
