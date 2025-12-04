@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+//testing nifhs
 /**
  * Write a description of class Gems here.
  * 
