@@ -14,20 +14,9 @@ public class Gems extends Actor
      */
     public void act()
     {
-        checkTouch();
+        
         
     }
     
-    private void checkTouch(){
-        if (isTouching(Player.class)){
-            Level1World world = (Level1World) getWorld();
-        
-            
-            
-            world.getGemCounter().add(1);
-            
-            getWorld().removeObject(this);
-        }
 
-    }
 }
