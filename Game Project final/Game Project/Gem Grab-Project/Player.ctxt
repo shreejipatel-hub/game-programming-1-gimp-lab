@@ -22,7 +22,11 @@ comment8.target=void\ takeDamage()
 comment9.params=
 comment9.target=void\ die()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 numComments=11
+=======
+numComments=10
+>>>>>>> Stashed changes
 =======
 numComments=10
 >>>>>>> Stashed changes
