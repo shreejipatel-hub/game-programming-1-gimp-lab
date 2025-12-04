@@ -12,6 +12,7 @@ public class GreenGem extends LoadingScreenDeco
         GreenfootImage GreenGem = getImage();
         GreenGem.scale(75, 75); 
         setImage(GreenGem);
+        
     }
     
     /**
@@ -25,5 +26,6 @@ public class GreenGem extends LoadingScreenDeco
         if (getY() == 399) {
             getWorld().removeObject(this);
         }
+        
     }
 }

@@ -21,6 +21,8 @@ public class Level2World extends World
     }
     
     private void prepare(){
+        showText("You get one life",  400,  70);
+        
         // 1. Get selected player from SkinManager
         Actor player = SkinManager.getSelectedPlayer();
 

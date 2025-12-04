@@ -41,4 +41,16 @@ public class Beam extends Trap
     {
         return active;
     }
+    public void interval1(){
+        interval = 100;
+    }
+        public void interval2(){
+        interval = 300;
+    }
+        public void interval3(){
+        interval = 150;
+    }
+        public void interval4(){
+        interval = 75;
+    }
 }

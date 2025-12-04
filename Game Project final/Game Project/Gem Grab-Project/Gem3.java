@@ -17,5 +17,8 @@ public class Gem3 extends Gems
         GreenfootImage Gem3 = getImage();
         Gem3.scale(40, 40); 
         setImage(Gem3);
+        
+        super.floatUpDown();
+        super.glow();
     }
 }

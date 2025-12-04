@@ -31,6 +31,7 @@ public class Level3 extends LevelButton
     {
         floatUpDown();
         glow();
+        checkClick();
     }
 
     private void floatUpDown()
@@ -51,5 +52,16 @@ public class Level3 extends LevelButton
         }
 
         getImage().setTransparency(alpha);
+    }
+    
+           /**
+     * When clicked, go to Level 3 World.
+     */
+    private void checkClick()
+    {
+        if (Greenfoot.mouseClicked(this))
+        {
+            Greenfoot.setWorld(new Level3World());
+        }
     }
 }

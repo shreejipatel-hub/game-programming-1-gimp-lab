@@ -18,5 +18,8 @@ public class Gem2 extends Gems
         GreenfootImage Gem2 = getImage();
         Gem2.scale(40, 40); 
         setImage(Gem2);
+        
+        super.floatUpDown();
+        super.glow();
     }
 }
