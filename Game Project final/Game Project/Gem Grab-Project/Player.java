@@ -165,6 +165,7 @@ private GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
                 if (!getWorld().getObjects(ExitPortal.class).isEmpty())
                 {
                     Actor target = getWorld().getObjects(ExitPortal.class).get(0);
+                    Greenfoot.playSound("teleportation.mp3");
                     setLocation(target.getX(), target.getY());
                     teleportCooldown = 60;
                 }
@@ -174,6 +175,7 @@ private GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
                 if (!getWorld().getObjects(EntryPortal.class).isEmpty())
                 {
                     Actor target = getWorld().getObjects(EntryPortal.class).get(0);
+                    Greenfoot.playSound("teleportation.mp3");
                     setLocation(target.getX(), target.getY());
                     teleportCooldown = 60;
                 }

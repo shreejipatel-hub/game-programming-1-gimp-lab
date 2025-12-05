@@ -4,18 +4,13 @@ public class LevelWonWorld extends World
 {
     private int timer = 180;  // 3 seconds
 
-    // Default constructor
-    public LevelWonWorld()
-    {    
-        super(810, 540, 1);
-
-        prepare();
-    }
+   
 
     // Constructor used by Player: accepts message + score
     public LevelWonWorld(String message, int score)
     {      
-        this(); // load world and UI first
+        
+        super(612, 612, 1);
         
         MainMenu.stopMenuMusic();
         GreenfootSound celebration = new GreenfootSound("celebration.mp3");

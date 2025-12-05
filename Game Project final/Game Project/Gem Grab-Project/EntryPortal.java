@@ -14,22 +14,5 @@ public class EntryPortal extends Portals
     public void act()
     {
         turn(3);
-
-        if (canTeleport)
-        {
-            Player p = (Player)getOneIntersectingObject(Player.class);
-            if (p != null)
-            {
-                ExitPortal exitPortal = (ExitPortal)getWorld().getObjects(ExitPortal.class).get(0);
-
-                teleportPlayer(p, exitPortal);
-            }
-        }
-
-        // re-enable teleport after player leaves portal
-        if (getOneIntersectingObject(Player.class) == null)
-        {
-            canTeleport = true;
-        }
     }
 }

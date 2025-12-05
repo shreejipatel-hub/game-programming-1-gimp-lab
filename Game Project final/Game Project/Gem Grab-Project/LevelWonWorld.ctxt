@@ -1,11 +1,9 @@
 #BlueJ class context
 comment0.target=LevelWonWorld
-comment1.params=
-comment1.target=LevelWonWorld()
-comment2.params=message\ score
-comment2.target=LevelWonWorld(java.lang.String,\ int)
+comment1.params=message\ score
+comment1.target=LevelWonWorld(java.lang.String,\ int)
+comment2.params=
+comment2.target=void\ act()
 comment3.params=
-comment3.target=void\ act()
-comment4.params=
-comment4.target=void\ prepare()
-numComments=5
+comment3.target=void\ prepare()
+numComments=4

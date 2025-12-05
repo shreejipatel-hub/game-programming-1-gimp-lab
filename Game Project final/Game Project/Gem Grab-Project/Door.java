@@ -14,18 +14,7 @@ public class Door extends Actor
             setImage(img);
             scaled = true;
         }
-
-        checkPlayerTouch();
     }
 
-    private void checkPlayerTouch()
-    {
-        Player p = (Player)getOneIntersectingObject(Player.class);
-
-        if (p != null)
-        {
-            // Go to "Level Won" world first
-            Greenfoot.setWorld(new LevelWonWorld());
-        }
-    }
+  
 }
