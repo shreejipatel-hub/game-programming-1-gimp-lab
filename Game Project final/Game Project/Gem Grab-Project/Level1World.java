@@ -2,11 +2,12 @@ import greenfoot.*;
 //yooo credo the goat gangy
 public class Level1World extends World
 {
+    private HealthBar healthBar;
     private Counter gemCounter;
     public Level1World()
+
     {
-        super(810, 540, 1);
-        
+        super(810, 540, 1);   
         prepare();
     }
     
@@ -17,6 +18,8 @@ public class Level1World extends World
 
     private void prepare()
     {
+        healthBar = new HealthBar();
+        addObject(healthBar, 230, 20);
         gemCounter = new Counter("Gems: "); // Instantiate the counter
         addObject(gemCounter, 50, 25); 
 
@@ -181,9 +184,20 @@ public class Level1World extends World
         Gem3 gem3 = new Gem3();
         addObject(gem3,262,240);
         gem3.setLocation(274,259);
+
+        HealthBar healthBar = new HealthBar();
+        addObject(healthBar,243,20);
+        removeObject(healthBar);
     }
 
     public Counter getGemCounter(){
         return gemCounter;
+    
     }
+    
+    public HealthBar getHealthBar()
+    {
+        return healthBar;  // player will use this
+    }
+    
 }

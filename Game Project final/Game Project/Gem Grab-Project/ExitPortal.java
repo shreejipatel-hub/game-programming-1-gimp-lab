@@ -1,23 +1,34 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class ExitPortal here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class ExitPortal extends Portals
 {
-    /**
-     * Act - do whatever the ExitPortal wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private GreenfootImage portalImage;
+
+    public ExitPortal()
+    {
+        portalImage = new GreenfootImage(getImage());
+        portalImage.scale(60, 60);
+        setImage(portalImage);
+    }
+
     public void act()
     {
-        // Add your action code here.
-        GreenfootImage EntryPortal = getImage();
-        EntryPortal.scale(60, 60); 
-        setImage(EntryPortal);
         turn(-3);
+
+        if (canTeleport)
+        {
+            Player p = (Player)getOneIntersectingObject(Player.class);
+            if (p != null)
+            {
+                EntryPortal entryPortal = (EntryPortal)getWorld().getObjects(EntryPortal.class).get(0);
+
+                teleportPlayer(p, entryPortal);
+            }
+        }
+
+        if (getOneIntersectingObject(Player.class) == null)
+        {
+            canTeleport = true;
+        }
     }
 }

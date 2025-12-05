@@ -1,19 +1,27 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class Portals here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
 public class Portals extends Actor
 {
-    /**
-     * Act - do whatever the Portals wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    protected boolean canTeleport = true;  // prevents infinite loops
+
     public void act()
     {
-        // Add your action code here.
+        // nothing here – subclasses handle visuals
+    }
+
+    /**
+     * Teleport a player to another portal.
+     */
+    protected void teleportPlayer(Player p, Portals destination)
+    {
+        if (destination == null) return;
+
+        // Move player to exit portal position
+        p.setLocation(destination.getX(), destination.getY());
+
+        // Cooldown so player cannot instantly teleport back
+        p.ySpeed = 0;
+        canTeleport = false;
+        destination.canTeleport = false;
     }
 }

@@ -33,6 +33,26 @@ public class MainMenu extends World
         startParticles();
     }
 
+    public static void startMenuMusic()
+    {
+        if (!music.isPlaying())
+        {
+            music.playLoop();
+        }
+    }
+
+    public static void stopMenuMusic()
+    {
+        
+    if (music != null)
+    {
+        music.stop();   
+        // FULL STOP — not pause
+    }   // stop() fully kills the loop (pause() was buggy)
+    
+    }
+
+    // (Keeping your old methods in case something else uses them)
     public void musicStart()
     {
         music.playLoop();
@@ -40,7 +60,7 @@ public class MainMenu extends World
 
     public void musicStop()
     {
-        music.pause();
+        music.stop();
     }
     
     public static void setMusicVolume(double v)
@@ -85,7 +105,7 @@ public class MainMenu extends World
         RedButton redButton = new RedButton();
         addObject(redButton, 732, 499);
 
-        // --- VOLUME SLIDER LABEL (uses your volume.png image) ---
+        // --- VOLUME SLIDER LABEL ---
         VolumeLabel label = new VolumeLabel();
         addObject(label, getWidth() / 2, 460);
 
