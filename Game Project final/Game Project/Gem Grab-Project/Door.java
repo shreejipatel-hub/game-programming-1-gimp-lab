@@ -1,21 +1,31 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-//yoyoy
-/**
- * Write a description of class Door here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
+import greenfoot.*;
+
 public class Door extends Actor
 {
-    /**
-     * Act - do whatever the Door wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private boolean scaled = false;
+
     public void act()
     {
-        GreenfootImage Door = getImage();
-        Door.scale(60, 60); 
-        setImage(Door);
+        // scale only once
+        if (!scaled)
+        {
+            GreenfootImage img = getImage();
+            img.scale(60, 60);
+            setImage(img);
+            scaled = true;
+        }
+
+        checkPlayerTouch();
+    }
+
+    private void checkPlayerTouch()
+    {
+        Player p = (Player)getOneIntersectingObject(Player.class);
+
+        if (p != null)
+        {
+            // Go to "Level Won" world first
+            Greenfoot.setWorld(new LevelWonWorld());
+        }
     }
 }

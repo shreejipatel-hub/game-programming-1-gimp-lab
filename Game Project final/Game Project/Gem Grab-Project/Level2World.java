@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level2World extends World
 {
-
+    private HealthBar healthBar;
     /**
      * Constructor for objects of class Level2World.
      * 
@@ -22,6 +22,9 @@ public class Level2World extends World
     
     private void prepare(){
         showText("You get one life",  400,  70);
+        
+        healthBar = new HealthBar();
+        addObject(healthBar, 230, 20);
         
         // 1. Get selected player from SkinManager
         Actor player = SkinManager.getSelectedPlayer();
