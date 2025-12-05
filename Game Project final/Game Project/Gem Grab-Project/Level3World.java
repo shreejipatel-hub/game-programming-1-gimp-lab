@@ -8,6 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level3World extends World
 {
+    private int levelNumber = 3;
+    private HealthBar healthBar;
 
     /**
      * Constructor for objects of class Level3World.
@@ -19,6 +21,10 @@ public class Level3World extends World
         super(840, 540, 1); 
         prepare();
     }
+    public int getLevelNumber()
+    {
+        return levelNumber;
+    }
     
     /**
      * Prepare the world for the start of the program.
@@ -26,6 +32,8 @@ public class Level3World extends World
      */
     private void prepare()
     {
+        healthBar = new HealthBar();
+        addObject(healthBar, 230, 20);
         showText("Time to time yourself...",  400,  100);
         // 1. Get selected player from SkinManager
         Actor player = SkinManager.getSelectedPlayer();
@@ -181,5 +189,9 @@ public class Level3World extends World
         door.setLocation(541,198);
         door.setLocation(552,211);
         door.setLocation(541,239);
+    }
+        public HealthBar getHealthBar()
+    {
+        return healthBar;  // player will use this
     }
 }

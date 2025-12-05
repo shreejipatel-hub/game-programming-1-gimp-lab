@@ -21,11 +21,13 @@ public class Player extends Actor
 
     // -------- HEALTH SYSTEM --------
     protected int health = 3;
+    private boolean usedHealThisLevel = false;   // X heal used?
+    private boolean healKeyHeld = false;         // to detect single press
 
-    // UI reference for the health bar
+    // UI reference for health bar
     private HealthBar healthUI;
-    
-private GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
+
+    private GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
 
     /**
      * Called automatically when the player is added to a world.
@@ -49,10 +51,11 @@ private GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
         checkTrapCollision();
         checkGemCollection();
         updateScoreBoard();
+        checkHealPowerup();   // <--- heal is checked every frame
 
         checkDoor();
 
-        if(teleportCooldown > 0)
+        if (teleportCooldown > 0)
         {
             teleportCooldown--;
         }
@@ -188,7 +191,6 @@ private GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
     {
         health--;
 
-        // update UI
         if (healthUI != null)
         {
             healthUI.setHealth(health);
@@ -207,18 +209,63 @@ private GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
     private void die()
     {
         deathSound.play();
-        Greenfoot.delay(60);
+        Greenfoot.delay(60); // short pause on death is OK
         Greenfoot.setWorld(new DeathWorld());
     }
 
-    // -------- DOOR → LEVEL WON --------
-    public void checkDoor()
+    // -------- HEAL POWERUP (X key) --------
+    private void checkHealPowerup()
     {
-        if (isTouching(Door.class) && Greenfoot.isKeyDown("up"))
+        boolean xDown = Greenfoot.isKeyDown("x");
+
+        // detect a *new* press (key just went down this frame)
+        if (xDown && !healKeyHeld)
         {
-            Greenfoot.setWorld(new LevelWonWorld("You finished level 1!!", levelGems));
+            healKeyHeld = true;   // remember that X is being held
+
+            if (!usedHealThisLevel && health < 3)
+            {
+                health++;
+                usedHealThisLevel = true;
+
+                if (healthUI != null)
+                {
+                    healthUI.setHealth(health);
+                }
+
+                Greenfoot.playSound("heal.wav");  // optional sound
+            }
+        }
+
+        // key released → allow detection again (but usedHealThisLevel stays true)
+        if (!xDown)
+        {
+            healKeyHeld = false;
         }
     }
+
+    // -------- DOOR → LEVEL WON --------
+public void checkDoor()
+{
+    if (isTouching(Door.class) && Greenfoot.isKeyDown("up"))
+    {
+        // ask the world which level this is
+        World w = getWorld();
+        int level = 1; // fallback default
+
+        // each level world has a getLevelNumber() method
+        if (w instanceof Level1World) level = ((Level1World)w).getLevelNumber();
+        if (w instanceof Level2World) level = ((Level2World)w).getLevelNumber();
+        if (w instanceof Level3World) level = ((Level3World)w).getLevelNumber();
+        if (w instanceof Level4World) level = ((Level4World)w).getLevelNumber();
+        if (w instanceof Level5World) level = ((Level5World)w).getLevelNumber();
+
+        // build correct message
+        String msg = "You finished level " + level + "!!";
+
+        Greenfoot.setWorld(new LevelWonWorld(msg, levelGems));
+    }
+}
 
     // -------- GEM COLLECTION --------
     public void checkGemCollection()
@@ -231,7 +278,6 @@ private GreenfootSound deathSound = new GreenfootSound("deathsound.mp3");
         }
     }
 
-    // -------- GEM COUNTER ON SCREEN --------
     public void updateScoreBoard()
     {
         getWorld().showText("Level Gems: " + levelGems, 100, 30);

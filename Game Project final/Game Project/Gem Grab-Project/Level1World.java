@@ -2,6 +2,7 @@ import greenfoot.*;
 //yooo credo the goat gangy
 public class Level1World extends World
 {
+    private int levelNumber = 1;
     private HealthBar healthBar;
     private Counter gemCounter;
     public Level1World()
@@ -15,6 +16,12 @@ public class Level1World extends World
     {
         
     }
+    
+    public int getLevelNumber()
+    {
+        return levelNumber;
+    }
+    
 
     private void prepare()
     {

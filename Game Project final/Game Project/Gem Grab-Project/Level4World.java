@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level4World extends World
 {
+    private int levelNumber = 4;
 
     /**
      * Constructor for objects of class Level4World.
@@ -18,6 +19,11 @@ public class Level4World extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(840, 540, 1); 
         prepare();
+    }
+    
+    public int getLevelNumber()
+    {
+        return levelNumber;
     }
     
     /**

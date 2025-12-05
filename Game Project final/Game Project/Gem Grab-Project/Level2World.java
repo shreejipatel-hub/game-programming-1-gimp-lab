@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level2World extends World
 {
+    private int levelNumber = 2;
     private HealthBar healthBar;
     /**
      * Constructor for objects of class Level2World.
@@ -20,9 +21,13 @@ public class Level2World extends World
         prepare();
     }
     
+    public int getLevelNumber()
+    {
+        return levelNumber;
+    }
+    
     private void prepare(){
         showText("You get one life",  400,  70);
-        
         healthBar = new HealthBar();
         addObject(healthBar, 230, 20);
         
@@ -172,5 +177,9 @@ public class Level2World extends World
         sPlatform16.setLocation(314,346);
         sPlatform sPlatform24 = new sPlatform();
         addObject(sPlatform24,32,118);
+    }
+        public HealthBar getHealthBar()
+    {
+        return healthBar;  // player will use this
     }
 }

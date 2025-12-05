@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level5World extends World
 {
+    private int levelNumber = 5;
 
     /**
      * Constructor for objects of class Level5World.
@@ -18,6 +19,11 @@ public class Level5World extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 430, 1); 
         prepare();
+    }
+    
+    public int getLevelNumber()
+    {
+        return levelNumber;
     }
   
     private void prepare()
@@ -188,6 +194,13 @@ public class Level5World extends World
         Gem3 gem3 = new Gem3();
         addObject(gem3,598,106);
         removeObject(sword3);
+        sword6.setLocation(656,399);
+        sword6.setLocation(664,409);
+        beam2.setLocation(300,50);
+        beam2.setLocation(300,51);
+        beam2.setLocation(300,51);
+        removeObject(beam2);
+        spike6.setLocation(560,258);
     }
 
 }
