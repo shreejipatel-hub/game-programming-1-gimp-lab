@@ -233,7 +233,7 @@ public class Player extends Actor
                     healthUI.setHealth(health);
                 }
 
-                Greenfoot.playSound("heal.wav");  // optional sound
+                Greenfoot.playSound("heal.wav"); 
             }
         }
 
@@ -275,6 +275,7 @@ public void checkDoor()
             levelGems++;
             totalGems++;
             removeTouching(Gems.class);
+            Greenfoot.playSound("ding.mp3");
         }
     }
 
