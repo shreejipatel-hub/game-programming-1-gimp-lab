@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level5World extends World
 {
+    private HealthBar healthBar;
     private int levelNumber = 5;
+    private Counter gemCounter;
 
     /**
      * Constructor for objects of class Level5World.
@@ -25,16 +27,24 @@ public class Level5World extends World
     {
         return levelNumber;
     }
+    
+    public HealthBar getHealthBar()
+    {
+        return healthBar;  // player will use this
+    }
   
     private void prepare()
     {
-        showText("Shiny Ending",  400,  70);
+        showText("Shiny Ending", 400, 70);
 
-        // 1. Get selected player from SkinManager
+        // --- HEALTH (choose how many lives final level has) ---
+        healthBar = new HealthBar(3);
+        addObject(healthBar, 230, 20);
+
+        // --- PLAYER ---
         Actor player = SkinManager.getSelectedPlayer();
-
-        // 2. Spawn player at starting position
-        addObject(player, 52,383);
+        ((Player)player).health = 3;   // SET LIVES FOR LEVEL 5
+        addObject(player, 52, 383);
 
         // 3. (Optional) Add traps/platforms later
         // addObject(new SpikeTrap(), 400, 500);
@@ -201,6 +211,9 @@ public class Level5World extends World
         beam2.setLocation(300,51);
         removeObject(beam2);
         spike6.setLocation(560,258);
+        sword7.setLocation(367,98);
+        removeObject(sword7);
+        removeObject(sword);
     }
 
 }

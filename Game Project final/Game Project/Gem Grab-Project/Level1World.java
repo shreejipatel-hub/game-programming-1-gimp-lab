@@ -23,18 +23,20 @@ public class Level1World extends World
     }
     
 
-    private void prepare()
-    {
-        healthBar = new HealthBar();
-        addObject(healthBar, 230, 20);
-        gemCounter = new Counter("Gems: "); // Instantiate the counter
-        addObject(gemCounter, 50, 25); 
+private void prepare()
+{
+    // --- HEALTHBAR ---
+    healthBar = new HealthBar(3);   //
+    addObject(healthBar, 243, 20);
 
-        // 1. Get selected player from SkinManager
-        Actor player = SkinManager.getSelectedPlayer();
+    // --- GEM COUNTER ---
+    gemCounter = new Counter("Gems: ");
+    addObject(gemCounter, 50, 25);
 
-        // 2. Spawn player at starting position
-        addObject(player, 89, 463);
+    // --- PLAYER (from selected skin) ---
+    Actor player = SkinManager.getSelectedPlayer();
+    ((Player)player).health = 3;   // set lives for this level
+    addObject(player, 89, 463);
 
         // 3. (Optional) Add traps/platforms later
         // addObject(new SpikeTrap(), 400, 500);
@@ -191,10 +193,7 @@ public class Level1World extends World
         Gem3 gem3 = new Gem3();
         addObject(gem3,262,240);
         gem3.setLocation(274,259);
-
-        HealthBar healthBar = new HealthBar();
-        addObject(healthBar,243,20);
-        removeObject(healthBar);
+      
     }
 
     public Counter getGemCounter(){

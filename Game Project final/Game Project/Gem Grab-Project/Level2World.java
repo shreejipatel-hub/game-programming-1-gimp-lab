@@ -10,6 +10,7 @@ public class Level2World extends World
 {
     private int levelNumber = 2;
     private HealthBar healthBar;
+    private Counter gemCounter;
     /**
      * Constructor for objects of class Level2World.
      * 
@@ -26,16 +27,18 @@ public class Level2World extends World
         return levelNumber;
     }
     
-    private void prepare(){
-        showText("You get one life",  400,  70);
-        healthBar = new HealthBar();
-        addObject(healthBar, 230, 20);
-        
-        // 1. Get selected player from SkinManager
-        Actor player = SkinManager.getSelectedPlayer();
+private void prepare()
+{
+    showText("You get one life", 400, 70);
 
-        // 2. Spawn player at starting position
-        addObject(player, 20, 10);
+    // --- HEALTH ---
+    healthBar = new HealthBar(1);
+    addObject(healthBar, 230, 20);
+
+    // --- PLAYER ---
+    Actor player = SkinManager.getSelectedPlayer();
+    ((Player)player).health = 1;
+    addObject(player, 20, 10);
 
         // 3. (Optional) Add traps/platforms later
         // addObject(new SpikeTrap(), 400, 500);
@@ -177,7 +180,19 @@ public class Level2World extends World
         sPlatform16.setLocation(314,346);
         sPlatform sPlatform24 = new sPlatform();
         addObject(sPlatform24,32,118);
+        gem2.setLocation(67,448);
+        gem2.setLocation(45,436);
+        gem2.setLocation(83,462);
+        gem2.setLocation(81,477);
+        gem2.setLocation(51,413);
+        gem2.setLocation(61,440);
+        gem2.setLocation(56,453);
+        gem2.setLocation(206,294);
+        sPlatform22.setLocation(33,484);
+        sPlatform22.setLocation(53,490);
+        gem2.setLocation(47,449);
     }
+
         public HealthBar getHealthBar()
     {
         return healthBar;  // player will use this

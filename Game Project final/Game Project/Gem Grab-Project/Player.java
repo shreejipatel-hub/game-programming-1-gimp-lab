@@ -20,7 +20,7 @@ public class Player extends Actor
     public int levelGems = 0;
 
     // -------- HEALTH SYSTEM --------
-    protected int health = 3;
+    public int health = 3;
     private boolean usedHealThisLevel = false;   // X heal used?
     private boolean healKeyHeld = false;         // to detect single press
 
@@ -33,14 +33,45 @@ public class Player extends Actor
      * Called automatically when the player is added to a world.
      * This is where we connect the Player to the HealthBar.
      */
+
     protected void addedToWorld(World world)
     {
+        // Connect player to the correct health bar based on the level world
         if (world instanceof Level1World)
         {
             healthUI = ((Level1World)world).getHealthBar();
         }
-        // Add similar lines here if Level2World, Level3World, etc. also have healthbars.
+        else if (world instanceof Level2World)
+        {
+            healthUI = ((Level2World)world).getHealthBar();
+        }
+        else if (world instanceof Level3World)
+        {
+            healthUI = ((Level3World)world).getHealthBar();
+        }
+        else if (world instanceof Level4World)
+        {
+            healthUI = ((Level4World)world).getHealthBar();
+        }
+        else if (world instanceof Level5World)
+        {
+            healthUI = ((Level5World)world).getHealthBar();
+        }
+    
+        // Sync UI with player's current health
+        if (healthUI != null)
+        {
+            healthUI.setHealth(health);
+        }
+    
+        // Reset healing for new level
+        usedHealThisLevel = false;
+        healKeyHeld = false;
     }
+
+
+
+
 
     public void act()
     {
@@ -206,7 +237,8 @@ public class Player extends Actor
         }
     }
 
-    private void die()
+
+    public void die()
     {
         deathSound.play();
         Greenfoot.delay(60); // short pause on death is OK
@@ -214,35 +246,36 @@ public class Player extends Actor
     }
 
     // -------- HEAL POWERUP (X key) --------
-    private void checkHealPowerup()
+private void checkHealPowerup()
+{
+    boolean xDown = Greenfoot.isKeyDown("x");
+
+    if (xDown && !healKeyHeld)
     {
-        boolean xDown = Greenfoot.isKeyDown("x");
+        healKeyHeld = true;
 
-        // detect a *new* press (key just went down this frame)
-        if (xDown && !healKeyHeld)
+        if (!usedHealThisLevel && healthUI != null)
         {
-            healKeyHeld = true;   // remember that X is being held
+            int max = healthUI.getMaxHealth();
 
-            if (!usedHealThisLevel && health < 3)
+            if (health < max)
             {
                 health++;
                 usedHealThisLevel = true;
 
-                if (healthUI != null)
-                {
-                    healthUI.setHealth(health);
-                }
+                healthUI.setHealth(health);
 
-                Greenfoot.playSound("heal.wav"); 
+                Greenfoot.playSound("heal.wav");
             }
         }
-
-        // key released → allow detection again (but usedHealThisLevel stays true)
-        if (!xDown)
-        {
-            healKeyHeld = false;
-        }
     }
+
+    if (!xDown)
+    {
+        healKeyHeld = false;
+    }
+}
+
 
     // -------- DOOR → LEVEL WON --------
 public void checkDoor()

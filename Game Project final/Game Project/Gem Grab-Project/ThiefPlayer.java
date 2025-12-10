@@ -21,7 +21,7 @@ public class ThiefPlayer extends Player
     public ThiefPlayer()
     {
         GreenfootImage img = getImage();
-        img.scale(50, 50);
+        img.scale(34, 34);
         
         setImage(img);
     }

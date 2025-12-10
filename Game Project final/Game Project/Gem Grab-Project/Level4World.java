@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Level4World extends World
 {
+    private HealthBar healthBar;
     private int levelNumber = 4;
+    private Counter gemCounter;
 
     /**
      * Constructor for objects of class Level4World.
@@ -26,19 +28,27 @@ public class Level4World extends World
         return levelNumber;
     }
     
+    public HealthBar getHealthBar()
+    {
+        return healthBar;  // player will use this
+    }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
      */
     private void prepare()
     {
-        showText("More is less",  400,  70);
-
-        // 1. Get selected player from SkinManager
+        showText("More is less", 400, 70);
+    
+        // --- HEALTH (choose number of lives for level 4) ---
+        healthBar = new HealthBar(2);
+        addObject(healthBar, 230, 20);
+    
+        // --- PLAYER ---
         Actor player = SkinManager.getSelectedPlayer();
-
-        // 2. Spawn player at starting position
-        addObject(player, 40,500 );
+        ((Player)player).health = 2;   // SET LIVES FOR LEVEL 4
+        addObject(player, 40, 500);
 
         // 3. (Optional) Add traps/platforms later
         // addObject(new SpikeTrap(), 400, 500);

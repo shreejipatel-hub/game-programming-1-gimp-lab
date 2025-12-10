@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=HealthBar
-comment1.params=
-comment1.target=HealthBar()
-comment2.params=h
+comment1.params=max
+comment1.target=HealthBar(int)
+comment2.params=health
 comment2.target=void\ setHealth(int)
 comment3.params=
-comment3.target=void\ updateImage()
+comment3.target=int\ getMaxHealth()
 numComments=4

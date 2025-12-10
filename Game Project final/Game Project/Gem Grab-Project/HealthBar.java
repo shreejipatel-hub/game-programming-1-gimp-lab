@@ -6,29 +6,28 @@ public class HealthBar extends Actor
     private GreenfootImage heart2 = new GreenfootImage("Heart_2.png");
     private GreenfootImage heart3 = new GreenfootImage("Heart_3.png");
 
-    private int health = 3;
+    private int maxHealth = 3;
 
-    public HealthBar()
+    public HealthBar(int max)
     {
-        updateImage();
+        maxHealth = max;
+        setHealth(maxHealth);   // start full
     }
 
-    public void setHealth(int h)
+    public void setHealth(int health)
     {
-        health = h;
-        updateImage();
+        if (health >= 3 && maxHealth >= 3)
+            setImage(heart3);
+        else if (health == 2 && maxHealth >= 2)
+            setImage(heart2);
+        else if (health == 1)
+            setImage(heart1);
+        else
+            setImage(new GreenfootImage(1,1));
     }
 
-    private void updateImage()
+    public int getMaxHealth()
     {
-        switch(health)
-        {
-            case 3: setImage(heart3); break;
-            case 2: setImage(heart2); break;
-            case 1: setImage(heart1); break;
-            case 0: 
-                setImage(new GreenfootImage(1,1)); 
-                break;
-        }
+        return maxHealth;
     }
 }

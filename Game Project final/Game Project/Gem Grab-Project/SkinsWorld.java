@@ -64,7 +64,6 @@ public class SkinsWorld extends World
         addObject(classicSkin,128,379);
         classicSkin.setLocation(416,415);
 
-        // --- LOCKED SKINS ---
         Locked lockedIcon = new Locked();
         addObject(lockedIcon,573,350);
 
